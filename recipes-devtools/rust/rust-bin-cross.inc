@@ -6,7 +6,7 @@ SECTION = "devel"
 inherit cross
 inherit rust_bin-common
 
-PN:class-native = "rust-bin-native-${BUILD_ARCH}"
+PN_class-native = "rust-bin-native-${BUILD_ARCH}"
 
 # Required to link binaries
 DEPENDS += "${@ "gcc-cross-${TARGET_ARCH}" if d.getVar('TARGET_ARCH') == "X86_64" else "" }" 

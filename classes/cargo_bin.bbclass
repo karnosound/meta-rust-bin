@@ -2,7 +2,7 @@ inherit rust_bin-common
 
 # Many crates rely on pkg-config to find native versions of their libraries for
 # linking - do the simple thing and make it generally available.
-DEPENDS:append = "\
+DEPENDS_append = "\
     ${@ "cargo-bin-cross-${TARGET_ARCH}" if d.getVar('TARGET_ARCH') != "${BUILD_ARCH}" else "cargo-bin-native" }    \
     pkgconfig-native \
 "
@@ -49,7 +49,7 @@ WRAPPER_DIR = "${WORKDIR}/wrappers"
 # Set the Cargo manifest path to the typical location
 CARGO_MANIFEST_PATH ?= "${S}/Cargo.toml"
 
-FILES:${PN}-dev += "${libdir}/*.rlib"
+FILES_${PN}-dev += "${libdir}/*.rlib"
 
 CARGO_BUILD_FLAGS = "\
     --verbose \
